@@ -1,20 +1,17 @@
-import { TodoContext } from "@/context/TodoContext";
+import { TodoContext } from "@/context/TodoContext"; // Named Import 사용
 import { ClipboardCheck, Ellipsis, Monitor, Video } from "lucide-react";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 
 const TodoDashboard = () => {
   const { todos } = useContext(TodoContext);
+
   const all = todos.length;
-  const completed = 7;
-  const pending = 3;
+  const completed = todos.filter((todo) => todo.completed).length; // 완료된 할 일 수 계산
+  const pending = todos.filter((todo) => !todo.completed).length; // 미완료된 할 일 수 계산
 
   return (
     <DashboardSection>
-      <DashboardHeader>
-        <h1>Dashboard</h1>
-      </DashboardHeader>
-
       <DashboardCardList>
         <DashboardCard $flex="2" color="red">
           <div>
@@ -54,8 +51,6 @@ const DashboardSection = styled.section`
   display: flex;
   flex-direction: column;
 `;
-const DashboardHeader = styled.header``;
-
 const DashboardCardList = styled.div`
   display: flex;
   flex-direction: row;

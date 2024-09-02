@@ -1,15 +1,12 @@
-import RootLayout from "./components/layout/RootLayout";
-import TodoContainer from "./components/todo/TodoContainer";
+import Router from "./Router";
 import TodoProvider from "./context/TodoProvider";
 import "./reset.css";
 
 const App = () => {
   return (
-    <RootLayout>
-      <TodoProvider>
-        <TodoContainer />
-      </TodoProvider>
-    </RootLayout>
+    <TodoProvider>
+      <Router />
+    </TodoProvider>
   );
 };
 

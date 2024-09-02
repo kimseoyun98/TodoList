@@ -1,32 +1,30 @@
-import React, { useState } from "react";
-import { TodoContext } from "./TodoContext";
+import { useState } from "react";
+import { TodoContext } from "./TodoContext"; // Named Import로 변경
+import { SAMPLE_TODOS } from "@/components/constants/sample-todos";
 
-const TodoProvider = ({ children }) => {
-  const [todos, setTodos] = useState([]);
+export const TodoProvider = ({ children }) => {
+  const [todos, setTodos] = useState(SAMPLE_TODOS);
 
-  const addTodo = (text) => {
-    const newTodo = {
-      id: crypto.randomUUID(),
-      text,
-      completed: false,
-    };
+  const addTodos = (newTodo) => {
     setTodos([...todos, newTodo]);
   };
 
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
+  const toggleCompleted = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const handleDelete = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, deleteTodo }}>
+    <TodoContext.Provider
+      value={{ todos, addTodos, toggleCompleted, handleDelete }} // todos 포함
+    >
       {children}
     </TodoContext.Provider>
   );

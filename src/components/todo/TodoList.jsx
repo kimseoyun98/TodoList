@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
-import { TodoContext } from "../../context/TodoContext";
+import { TodoContext } from "../../context/TodoContext"; // Named Import 사용
 
 const TodoList = () => {
   const { todos } = useContext(TodoContext);
