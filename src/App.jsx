@@ -1,10 +1,12 @@
-import TodoList from "./components/TodoList";
+import Router from "./Router";
+import TodoProvider from "./context/TodoProvider";
+import "./reset.css";
 
 const App = () => {
   return (
-    <main className="main-center">
-      <TodoList/>
-    </main>
+    <TodoProvider>
+      <Router />
+    </TodoProvider>
   );
 };
 
