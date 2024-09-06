@@ -21,9 +21,20 @@ export const TodoProvider = ({ children }) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
+  const completedTodos = todos.filter((todo) => todo.completed);
+
+  const pendingTodos = todos.filter((todo) => !todo.completed);
+
   return (
     <TodoContext.Provider
-      value={{ todos, addTodos, toggleCompleted, handleDelete }} // todos 포함
+      value={{
+        todos,
+        addTodos,
+        toggleCompleted,
+        handleDelete,
+        completedTodos,
+        pendingTodos,
+      }} // todos 포함
     >
       {children}
     </TodoContext.Provider>
