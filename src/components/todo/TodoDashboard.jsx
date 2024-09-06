@@ -13,7 +13,7 @@ const TodoDashboard = () => {
   return (
     <DashboardSection>
       <DashboardCardList>
-        <DashboardCard $flex="2" color="red" to={"/"} $highlight={!filter}>
+        <DashboardCard $flex="2" color="#e33535" to={"/"} $highlight={!filter}>
           <div>
             <ClipboardCheck />
             <Ellipsis />
@@ -24,7 +24,7 @@ const TodoDashboard = () => {
         </DashboardCard>
         <DashboardCard
           $flex="1"
-          color="blue"
+          color="#8c35e3"
           to={"?filter=completed"}
           $highlight={filter === "completed"}
         >
@@ -38,7 +38,7 @@ const TodoDashboard = () => {
         </DashboardCard>
         <DashboardCard
           $flex="1"
-          color="orange"
+          color="#202020"
           to={"?filter=pending"}
           $highlight={filter === "pending"}
         >
