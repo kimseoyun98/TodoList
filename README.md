@@ -11,8 +11,7 @@
 4. 대시 보드 카드 하이라이팅
 
 ## Changes 📝
-
-![]("https://github.com/user-attachments/assets/82c24ac8-2e1f-44b9-9bc3-38803e303566")
+<img width="792" alt="스크린샷 2024-09-06 오후 8 00 09" src="https://github.com/user-attachments/assets/82c24ac8-2e1f-44b9-9bc3-38803e303566">
 
 ## Test Checklist ☑️
 
