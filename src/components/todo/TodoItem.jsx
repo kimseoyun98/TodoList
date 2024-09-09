@@ -19,7 +19,7 @@ const TodoItem = ({ todo }) => {
       </TaskItemContent>
       <TaskItemActions>
         <TaskItemActionButton
-          onClick={() => toggleCompleted(todo.id)}
+          onClick={() => toggleCompleted(todo.id, !todo.completed)}
           color="blue"
         >
           {todo.completed ? "취소" : "완료"}
