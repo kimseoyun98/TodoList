@@ -5,7 +5,7 @@ import { TodoContext } from "@/context/TodoContext";
 
 const TodoForm = () => {
   const [newTodo, setNewTodo] = useState("");
-  const { addTodos } = useContext(TodoContext);
+  const { addTodo } = useContext(TodoContext);
 
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
@@ -21,7 +21,7 @@ const TodoForm = () => {
       text: newTodo,
       completed: false,
     };
-    addTodos(newTodoObj);
+    addTodo(newTodoObj);
     setNewTodo("");
   };
 
