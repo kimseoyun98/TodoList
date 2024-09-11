@@ -1,21 +1,6 @@
 {
   "todos": [
     {
-      "id": "3",
-      "text": "Go for a run",
-      "completed": false
-    },
-    {
-      "id": "4",
-      "text": "Finish homework",
-      "completed": false
-    },
-    {
-      "id": "5",
-      "text": "Call mom",
-      "completed": false
-    },
-    {
       "id": "6",
       "text": "Buy groceries",
       "completed": false
@@ -41,23 +26,18 @@
       "completed": false
     },
     {
-      "id": "57216620-3889-4a15-9c43-5ca50dd07bef",
+      "id": "736048c3-9467-4a71-8eb5-c87ecbc0d085",
       "text": "ㅇㅇㅇ",
       "completed": false
     },
     {
-      "id": "2a41897f-1db9-4028-84a0-e2ff89648da8",
-      "text": "ㅇㅇㅇㅇ",
+      "id": "f004d51e-5685-4e79-937b-917fd66e7844",
+      "text": "ㅌㅌㅌ",
       "completed": false
     },
     {
-      "id": "be206297-02cf-4dbb-b37d-8af0fac795a9",
+      "id": "be94bdff-eff7-4572-8e55-f7b95e7b16b3",
       "text": "ㅊㅊ",
-      "completed": false
-    },
-    {
-      "id": "781dc6fc-106c-4baa-89cf-73bf142ff14a",
-      "text": "ㅇㅇㅇㅇㅇㅇㅇㅇ",
       "completed": false
     }
   ]
