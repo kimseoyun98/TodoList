@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TodoContext } from "./TodoContext"; // Named Import로 변경
-import axios from "axios";
 import todoClient from "@/api/todoClient";
 
 const TodoProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    async function fetchTodos() {
-      try {
-        const response = await axios.get("http://localhost:3000/todos");
-        setTodos(response.data); // 서버에서 가져온 데이터로 todos 상태 설정
-      } catch (error) {
-        console.error("Failed to fetch todos:", error);
-      }
-    }
-    fetchTodos();
-  }, []);
 
   async function addTodo(newTodoObj) {
     const response = await todoClient.post("/", newTodoObj);
