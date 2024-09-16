@@ -1,14 +1,27 @@
-import { TodoContext } from "@/context/TodoContext";
+import { getTodos } from "@/api/todoClient";
+import { useQuery } from "@tanstack/react-query";
 import { ClipboardCheck, Ellipsis, Monitor, Video } from "lucide-react";
-import { useContext } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 const TodoDashboard = () => {
-  const { todos, completedTodos, pendingTodos } = useContext(TodoContext);
-
   const [searchParams] = useSearchParams();
   const filter = searchParams.get("filter");
+
+  const { data: allTodos } = useQuery({
+    queryKey: ["todos"],
+    queryFn: getTodos,
+  });
+
+  const { data: completedTodos } = useQuery({
+    queryKey: ["todos", "completed"],
+    queryFn: () => getTodos("completed"),
+  });
+
+  const { data: pendingTodos } = useQuery({
+    queryKey: ["todos", "pending"],
+    queryFn: () => getTodos("pending"),
+  });
 
   return (
     <DashboardSection>
@@ -19,7 +32,7 @@ const TodoDashboard = () => {
             <Ellipsis />
           </div>
           <p>
-            {todos.length} <br /> All Task
+            {allTodos?.length} <br /> All Task
           </p>
         </DashboardCard>
         <DashboardCard
@@ -33,7 +46,7 @@ const TodoDashboard = () => {
             <Ellipsis />
           </div>
           <p>
-            {completedTodos.length} <br /> Completed
+            {completedTodos?.length} <br /> Completed
           </p>
         </DashboardCard>
         <DashboardCard
@@ -47,7 +60,7 @@ const TodoDashboard = () => {
             <Ellipsis />
           </div>
           <p>
-            {pendingTodos.length} <br /> Pending
+            {pendingTodos?.length} <br /> Pending
           </p>
         </DashboardCard>
       </DashboardCardList>

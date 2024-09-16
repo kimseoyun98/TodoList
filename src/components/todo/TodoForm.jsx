@@ -1,27 +1,30 @@
-import { useContext, useState } from "react";
 import styled from "styled-components";
 import { TaskItemActionButton } from "./TodoItem";
-import { TodoContext } from "@/context/TodoContext";
+import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { postTodo } from "@/api/todoClient";
 
 const TodoForm = () => {
   const [newTodo, setNewTodo] = useState("");
-  const { addTodo } = useContext(TodoContext);
+  const queryClient = useQueryClient();
 
-  const handleInputChange = (e) => {
-    setNewTodo(e.target.value);
-  };
+  const { mutate } = useMutation({
+    mutationFn: (todo) => postTodo(todo),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["todos"],
+      });
+    },
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!newTodo.trim()) {
-      return;
-    }
     const newTodoObj = {
-      id: crypto.randomUUID(),
       text: newTodo,
       completed: false,
     };
-    addTodo(newTodoObj);
+    mutate(newTodoObj);
     setNewTodo("");
   };
 
