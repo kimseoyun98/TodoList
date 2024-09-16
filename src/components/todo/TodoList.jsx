@@ -1,25 +1,16 @@
-import { useContext } from "react";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
-import { TodoContext } from "../../context/TodoContext"; // Named Import 사용
-import { useSearchParams } from "react-router-dom";
+import { useTodoFilterQuery } from "@/hooks/useTodoQuery";
 
 const TodoList = () => {
-  const { todos, completedTodos, pendingTodos } = useContext(TodoContext);
+  const { data, isLoading, error } = useTodoFilterQuery();
 
-  const [searchParams] = useSearchParams();
-
-  const getFilteredTodos = () => {
-    const filter = searchParams.get("filter");
-    if (filter === "completed") {
-      return completedTodos;
-    } else if (filter === "pending") {
-      return pendingTodos;
-    }
-    return todos;
-  };
-
-  const filteredTodos = getFilteredTodos();
+  if (isLoading) {
+    return <TaskSection> Loadimg...</TaskSection>;
+  }
+  if (error) {
+    return <TaskSection> Error:{error.message}</TaskSection>;
+  }
 
   return (
     <TaskSection>
@@ -27,7 +18,7 @@ const TodoList = () => {
         <h1>Tasks</h1>
       </TaskHeader>
       <TaskList>
-        {filteredTodos.map((todo) => (
+        {data.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </TaskList>

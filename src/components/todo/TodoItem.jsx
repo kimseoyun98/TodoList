@@ -1,13 +1,36 @@
-import { TodoContext } from "@/context/TodoContext"; // Named Import 사용
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import {
+  useDeleteTodoMutation,
+  useToggleTodoMutation,
+} from "@/hooks/useTodoMutation";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const TodoItem = ({ todo }) => {
-  const { toggleCompleted, handleDelete } = useContext(TodoContext);
+  const navigate = useNavigate();
+
+  // const { mutateAsync: handleDelete, isPending } = useMutation({
+  //   mutationFn: (id) => deleteTodo(id),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({
+  //       queryKey: ["todos"],
+  //     });
+  //   },
+  // });
+
+  // const { mutate: handleToggle } = useMutation({
+  //   mutationFn: ({ id, completed }) => toggleTodo(id, completed),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({
+  //       queryKey: ["todos"],
+  //     });
+  //   },
+  // });
+
+  const { mutateAsyc: handleDelete, isPending } = useDeleteTodoMutation();
+  const { mutate: handleToggle } = useToggleTodoMutation();
 
   return (
-    <TaskItem>
+    <TaskItem key={todo.id}>
       <TaskItemContent>
         <TaskLink
           to={`/${todo.id}`}
@@ -19,13 +42,21 @@ const TodoItem = ({ todo }) => {
       </TaskItemContent>
       <TaskItemActions>
         <TaskItemActionButton
-          onClick={() => toggleCompleted(todo.id, !todo.completed)}
+          onClick={() =>
+            handleToggle({ id: todo.id, completed: !todo.completed })
+          }
           color="blue"
         >
           {todo.completed ? "취소" : "완료"}
         </TaskItemActionButton>
-        <TaskItemActionButton onClick={() => handleDelete(todo.id)} color="red">
-          삭제
+        <TaskItemActionButton
+          onClick={async () => {
+            await handleDelete(todo.id);
+            navigate("/");
+          }}
+          color="red"
+        >
+          {isPending ? "삭제중" : "삭제"}
         </TaskItemActionButton>
       </TaskItemActions>
     </TaskItem>

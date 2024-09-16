@@ -1,12 +1,14 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Router from "./Router";
-import TodoProvider from "./context/TodoProvider";
 import "./reset.css";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <TodoProvider>
+    <QueryClientProvider client={queryClient}>
       <Router />
-    </TodoProvider>
+    </QueryClientProvider>
   );
 };
 

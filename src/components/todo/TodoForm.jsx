@@ -1,28 +1,24 @@
-import { useContext, useState } from "react";
 import styled from "styled-components";
 import { TaskItemActionButton } from "./TodoItem";
-import { TodoContext } from "@/context/TodoContext";
+import { useState } from "react";
+import { useCreateTodoMutation } from "@/hooks/useTodoMutation";
 
 const TodoForm = () => {
   const [newTodo, setNewTodo] = useState("");
-  const { addTodo } = useContext(TodoContext);
+  const { mutate } = useCreateTodoMutation();
 
-  const handleInputChange = (e) => {
-    setNewTodo(e.target.value);
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!newTodo.trim()) {
-      return;
-    }
     const newTodoObj = {
-      id: crypto.randomUUID(),
       text: newTodo,
       completed: false,
     };
-    addTodo(newTodoObj);
+    mutate(newTodoObj);
     setNewTodo("");
+  };
+  const handleInputChange = (e) => {
+    setNewTodo(e.target.value);
   };
 
   return (

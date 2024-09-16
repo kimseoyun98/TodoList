@@ -1,13 +1,23 @@
-import { TodoContext } from "@/context/TodoContext";
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
 import TodoItem from "./TodoItem";
+import { useTodoDetailQuery } from "@/hooks/useTodoQuery";
 
-const TodoDetail = () => {
-  const { todos } = useContext(TodoContext);
-  const { id } = useParams();
+const TodoDetail = ({ id }) => {
+  const { data: todo, isLoading, error } = useTodoDetailQuery(id);
+  // const {
+  //   data: todo,
+  //   isLoading,
+  //   error,
+  // } = useQuery({
+  //   queryKey: ["todos", id],
+  //   queryFn: () => getTodosDetail(id),
+  // });
 
-  const todo = todos.find((todo) => todo.id === id);
+  if (isLoading) {
+    return <section> Loading </section>;
+  }
+  if (error) {
+    return <section> Error: {error.message} </section>;
+  }
   if (!todo) {
     return <section> 404 NOT FOUND TODO! </section>;
   }
