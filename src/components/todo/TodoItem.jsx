@@ -1,29 +1,33 @@
-import { deleteTodo, toggleTodo } from "@/api/todoClient";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  useDeleteTodoMutation,
+  useToggleTodoMutation,
+} from "@/hooks/useTodoMutation";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const TodoItem = ({ todo }) => {
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { mutateAsync: handleDelete, isPending } = useMutation({
-    mutationFn: (id) => deleteTodo(),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["todos"],
-      });
-    },
-  });
+  // const { mutateAsync: handleDelete, isPending } = useMutation({
+  //   mutationFn: (id) => deleteTodo(id),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({
+  //       queryKey: ["todos"],
+  //     });
+  //   },
+  // });
 
-  const { mutate: handleToggle } = useMutation({
-    mutationFn: ({ id, completed }) => toggleTodo(id, completed),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["todos"],
-      });
-    },
-  });
+  // const { mutate: handleToggle } = useMutation({
+  //   mutationFn: ({ id, completed }) => toggleTodo(id, completed),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({
+  //       queryKey: ["todos"],
+  //     });
+  //   },
+  // });
+
+  const { mutateAsyc: handleDelete, isPending } = useDeleteTodoMutation();
+  const { mutate: handleToggle } = useToggleTodoMutation();
 
   return (
     <TaskItem key={todo.id}>
@@ -52,7 +56,7 @@ const TodoItem = ({ todo }) => {
           }}
           color="red"
         >
-          삭제
+          {isPending ? "삭제중" : "삭제"}
         </TaskItemActionButton>
       </TaskItemActions>
     </TaskItem>

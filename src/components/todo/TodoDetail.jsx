@@ -1,15 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
 import TodoItem from "./TodoItem";
+import { useTodoDetailQuery } from "@/hooks/useTodoQuery";
 
 const TodoDetail = ({ id }) => {
-  const {
-    data: todo,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["todos", id],
-    queryFn: () => getTodosDetail(id),
-  });
+  const { data: todo, isLoading, error } = useTodoDetailQuery(id);
+  // const {
+  //   data: todo,
+  //   isLoading,
+  //   error,
+  // } = useQuery({
+  //   queryKey: ["todos", id],
+  //   queryFn: () => getTodosDetail(id),
+  // });
 
   if (isLoading) {
     return <section> Loading </section>;

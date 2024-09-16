@@ -1,27 +1,17 @@
-import { getTodos } from "@/api/todoClient";
-import { useQuery } from "@tanstack/react-query";
+import { useGetFilter } from "@/hooks/useGetFilter";
+import { useTodoQuery } from "@/hooks/useTodoQuery";
 import { ClipboardCheck, Ellipsis, Monitor, Video } from "lucide-react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const TodoDashboard = () => {
-  const [searchParams] = useSearchParams();
-  const filter = searchParams.get("filter");
+  const { filter } = useGetFilter;
 
-  const { data: allTodos } = useQuery({
-    queryKey: ["todos"],
-    queryFn: getTodos,
-  });
+  const { data: allTodos } = useTodoQuery();
 
-  const { data: completedTodos } = useQuery({
-    queryKey: ["todos", "completed"],
-    queryFn: () => getTodos("completed"),
-  });
+  const { data: completedTodos } = useTodoQuery("completed");
 
-  const { data: pendingTodos } = useQuery({
-    queryKey: ["todos", "pending"],
-    queryFn: () => getTodos("pending"),
-  });
+  const { data: pendingTodos } = useTodoQuery("pending");
 
   return (
     <DashboardSection>
