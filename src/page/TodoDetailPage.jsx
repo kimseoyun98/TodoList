@@ -1,33 +1,20 @@
 import { Link, useParams } from "react-router-dom";
 import TodoDetail from "../components/todo/TodoDetail";
-import styled from "styled-components";
 
-const TodoDetialPage = () => {
+const TodoDetailPage = () => {
   const { id } = useParams();
+
   return (
     <div>
       <TodoDetail id={id} />
 
       <Link to="/">
-        <ToListButton>목록으로</ToListButton>
+        <button className="mt-4 px-4 py-2 border-none rounded-lg bg-black text-white text-base w-full text-center cursor-pointer hover:opacity-70">
+          목록으로
+        </button>
       </Link>
     </div>
   );
 };
-export default TodoDetialPage;
-const ToListButton = styled.button`
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  background-color: black;
-  color: white;
-  font-size: 1rem;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
 
-  &:hover {
-    opacity: 0.7;
-  }
-`;
+export default TodoDetailPage;

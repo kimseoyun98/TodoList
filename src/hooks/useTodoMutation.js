@@ -1,5 +1,5 @@
-import { deleteTodo, postTodo, toggleTodo } from "@/api/todoClient";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteTodo, postTodo, toggleTodo } from "../api/todoClient";
 
 export const useCreateTodoMutation = () => {
   const queryClient = useQueryClient();

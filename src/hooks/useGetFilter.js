@@ -4,5 +4,5 @@ export const useGetFilter = () => {
   const [searchParams] = useSearchParams();
   const filter = searchParams.get("filter");
 
-  return filter;
+  return { filter };
 };

@@ -1,73 +1,13 @@
 {
   "todos": [
     {
-      "id": "6",
-      "text": "Buy groceries",
+      "id": "5aa8b016-d8fc-46cb-92db-57e586e8e5f7",
+      "text": "햄부기",
       "completed": false
     },
     {
-      "id": "7",
-      "text": "Walk the dog",
-      "completed": false
-    },
-    {
-      "id": "8",
-      "text": "Read a book",
-      "completed": false
-    },
-    {
-      "id": "9",
-      "text": "Do laundry",
-      "completed": false
-    },
-    {
-      "id": "10",
-      "text": "Write code",
-      "completed": false
-    },
-    {
-      "id": "736048c3-9467-4a71-8eb5-c87ecbc0d085",
-      "text": "ㅇㅇㅇ",
-      "completed": false
-    },
-    {
-      "id": "f004d51e-5685-4e79-937b-917fd66e7844",
-      "text": "ㅌㅌㅌ",
-      "completed": false
-    },
-    {
-      "id": "be94bdff-eff7-4572-8e55-f7b95e7b16b3",
-      "text": "ㅊㅊ",
-      "completed": false
-    },
-    {
-      "id": "299f7c13-5333-4c4b-83dd-f132915d92eb",
-      "text": "xx",
-      "completed": false
-    },
-    {
-      "id": "cd03edd0-200c-439b-8b0a-b823017e13cf",
-      "text": "x",
-      "completed": true
-    },
-    {
-      "id": "febd1987-7627-463d-abd7-6c6d112cf42f",
-      "text": "dddddd",
-      "completed": false
-    },
-    {
-      "id": "b7d40d31-c76e-4993-86ae-ec6696bdcfbc",
-      "text": "dddddddd",
-      "completed": false
-    },
-    {
-      "id": "f992ffeb-aedb-4855-8be1-8e5451140b9e",
-      "text": "cccccc",
-      "completed": false
-    },
-    {
-      "id": "bdf4f94f-5c80-46bf-bd4b-19aed23bb0cf",
-      "text": "ㅇㅇㅇ",
+      "id": "8003",
+      "text": "돈까스",
       "completed": false
     }
   ]
