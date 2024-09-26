@@ -9,7 +9,7 @@ export const useCreateTodoMutation = () => {
   return useMutation({
     mutationFn: (todo) => postTodo(todo),
     onSuccess: () => {
-      toast("아이템이 추가되었습니다!");
+      toast("아이템이 추가되었습니다!", "success");
 
       queryClient.invalidateQueries({
         queryKey: ["todos"],
@@ -25,7 +25,7 @@ export const useDeleteTodoMutation = () => {
   return useMutation({
     mutationFn: (id) => deleteTodo(id),
     onSuccess: () => {
-      toast("아이템이 삭제되었습니다!");
+      toast("아이템이 삭제되었습니다!", "error");
 
       queryClient.invalidateQueries({
         queryKey: ["todos"],
@@ -41,7 +41,7 @@ export const useToggleTodoMutation = () => {
   return useMutation({
     mutationFn: ({ id, completed }) => toggleTodo(id, completed),
     onSuccess: () => {
-      toast("아이템이 수정되었습니다!");
+      toast("아이템이 수정되었습니다!", "info");
 
       queryClient.invalidateQueries({
         queryKey: ["todos"],
