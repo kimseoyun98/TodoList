@@ -8,24 +8,6 @@ import styled from "styled-components";
 const TodoItem = ({ todo }) => {
   const navigate = useNavigate();
 
-  // const { mutateAsync: handleDelete, isPending } = useMutation({
-  //   mutationFn: (id) => deleteTodo(id),
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({
-  //       queryKey: ["todos"],
-  //     });
-  //   },
-  // });
-
-  // const { mutate: handleToggle } = useMutation({
-  //   mutationFn: ({ id, completed }) => toggleTodo(id, completed),
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({
-  //       queryKey: ["todos"],
-  //     });
-  //   },
-  // });
-
   const { mutateAsyc: handleDelete, isPending } = useDeleteTodoMutation();
   const { mutate: handleToggle } = useToggleTodoMutation();
 

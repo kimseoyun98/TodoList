@@ -6,10 +6,11 @@ const TodoList = () => {
   const { data, isLoading, error } = useTodoFilterQuery();
 
   if (isLoading) {
-    return <TaskSection> Loadimg...</TaskSection>;
+    return <TaskSection>Loading...</TaskSection>;
   }
+
   if (error) {
-    return <TaskSection> Error:{error.message}</TaskSection>;
+    return <TaskSection>Error: {error.message}</TaskSection>;
   }
 
   return (
@@ -33,13 +34,15 @@ const TaskSection = styled.section`
   flex-direction: column;
   gap: 1rem;
 `;
+
 const TaskHeader = styled.div`
   h1 {
     font-size: 1.5rem;
     font-weight: bold;
   }
 `;
-const TaskList = styled.div`
+
+const TaskList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1rem;

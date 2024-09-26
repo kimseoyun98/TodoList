@@ -1,4 +1,4 @@
-import { getTodos } from "@/api/todoClient";
+import { getTodos, getTodosDetail } from "@/api/todoClient";
 import { useQuery } from "@tanstack/react-query";
 import { useGetFilter } from "./useGetFilter";
 
@@ -18,6 +18,6 @@ export const useTodoQuery = (filter) => {
 export const useTodoDetailQuery = (id) => {
   return useQuery({
     queryKey: ["todos", id],
-    queryFn: () => getTodos(id),
+    queryFn: () => getTodosDetail(id),
   });
 };
